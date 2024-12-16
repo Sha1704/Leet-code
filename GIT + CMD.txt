@@ -1,4 +1,5 @@
 echo + message + >> + filename - add message to file
 echo + message + > + filename - replace all message in file
 type + filename - see file content
-git steps -  init, add, commit, status (optional), push (git push -u origin master (master is the branch))
+git steps -  init, add, commit, status (optional), push (git push -u origin master (master is the branch)), pull (if needed)
+to remove - git rm + "filename" (filename has to be in "), then commit and push to remove from github
