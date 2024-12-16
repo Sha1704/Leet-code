@@ -1,0 +1,4 @@
+echo + message + >> + filename - add message to file
+echo + message + > + filename - replace all message in file
+type + filename - see file content
+git steps -  init, add, commit, status (optional), push (git push -u origin master (master is the branch))
