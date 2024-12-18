@@ -41,7 +41,7 @@ To explore my LeetCode solutions:
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/your-username/leetcode-solutions.git
+    git clone https://github.com/Sha1704/Leet-code/tree/main
     ```
 2. Navigate to the relevant problem folder:
     ```bash
