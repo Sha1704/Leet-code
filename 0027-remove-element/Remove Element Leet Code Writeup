@@ -1,0 +1,77 @@
+Project Writeup: Remove Element - LeetCode Problem 27
+Problem Statement
+The goal of the problem is to remove all occurrences of a given integer `val` from an array `nums` in-place and return the number of elements in the modified array that are not equal to `val`. The updated array should have its first `k` elements contain all the values not equal to `val`, and the remaining elements can be ignored. The solution should achieve this without using extra space for another array.
+Constraints
+1. 0 <= nums.length <= 100
+2. 0 <= nums[i] <= 50
+3. 0 <= val <= 100
+Examples
+Example 1
+Input: nums = [3, 2, 2, 3], val = 3
+Output: k = 2, nums = [2, 2, _, _]
+Explanation: The first two elements of `nums` are `2`, and the underscores (`_`) represent values that are not relevant.
+Example 2
+Input: nums = [0, 1, 2, 2, 3, 0, 4, 2], val = 2
+Output: k = 5, nums = [0, 1, 4, 0, 3, _, _, _]
+Explanation: The first five elements of `nums` are `[0, 1, 4, 0, 3]`, with the order not necessarily preserved. Remaining elements are irrelevant.
+Solution Overview
+We will solve the problem using a two-pointer technique:
+1. Traverse the array using a single loop.
+2. Use a `count` variable to track the position of the next element not equal to `val`.
+3. If an element is not equal to `val`, place it at the `count` index, then increment `count`.
+4. Return `count` as the number of valid elements in the modified array.
+
+This approach ensures the solution operates in O(n) time complexity and uses O(1) extra space.
+Java Solution Implementation
+```java
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int count = 0; // Initialize counter for valid elements
+        
+        // Traverse through the array
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) { // If the current element is not equal to `val`
+                nums[count] = nums[i]; // Move it to the position `count`
+                count++; // Increment the counter
+            }
+        }
+        return count; // Return the count of valid elements
+    }
+}
+```
+Key Points of the Solution
+1. **In-place Modification**: Elements not equal to `val` are shifted to the left, overwriting the positions of elements equal to `val`.
+2. **Efficient Traversal**: The solution iterates through the array only once, making it linear in time complexity.
+3. **Space Efficiency**: By not using any additional data structures, it achieves O(1) space complexity.
+Testing
+Example Test Case 1
+```java
+int[] nums = {3, 2, 2, 3};
+int val = 3;
+Solution solution = new Solution();
+int k = solution.removeElement(nums, val);
+assert k == 2; // Check if the count is correct
+// Verify the first k elements are correct
+assert nums[0] == 2 && nums[1] == 2;
+```
+Example Test Case 2
+```java
+int[] nums = {0, 1, 2, 2, 3, 0, 4, 2};
+int val = 2;
+Solution solution = new Solution();
+int k = solution.removeElement(nums, val);
+assert k == 5; // Check if the count is correct
+// Verify the first k elements contain only valid values
+int[] expectedNums = {0, 1, 4, 0, 3};
+Arrays.sort(nums, 0, k); // Sort the first k elements for comparison
+Arrays.sort(expectedNums);
+assert Arrays.equals(Arrays.copyOf(nums, k), expectedNums);
+```
+Complexity Analysis
+1. **Time Complexity**: O(n)
+   - We traverse the array once, where `n` is the length of the array.
+2. **Space Complexity**: O(1)
+   - The solution does not use additional space apart from a few variables.
+Practical Applications
+1. **Data Cleaning**: Removing unwanted elements from datasets.
+2. **Memory Optimization**: Compacting arrays by removing unused or invalid entries.
